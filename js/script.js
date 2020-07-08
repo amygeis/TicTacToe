@@ -1,3 +1,5 @@
+let player = 1
+
 for (let i=0; i<3; i++){
     for (let j=0; j<3; j++) {
         let box = document.createElement("box")
@@ -24,16 +26,22 @@ class XO {
         // this.column = column;
         this.id = id;
         this.square = document.querySelector(`#${this.id}`)
+        this.squareClick = document.querySelector(`#${this.id}`)
         .addEventListener('click', this.click)
-        this.clicks = 0;
+        this.clicked = false;
         this.color = null;
         
     }
-    click = (event) => {
-        let target = (event.target.id)
-        // if (this.id == target){
-            console.log(this.id,target)
-        // }
+    click = () => {
+       console.log(this.square)
+       console.log(this.clicked)
+       if(this.clicked == false){
+       this.square.classList.add(`player${player}`)
+       this.clicked = true
+       if (player ===1)player =2
+       else player =1
+       }
+    
     }
 }
 
