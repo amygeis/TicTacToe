@@ -10,6 +10,11 @@ header {
     text-align: center;
 }
 
+footer {
+    grid-row: 3;
+    text-align: center;
+}
+
 board {
     grid-row:  2;
 

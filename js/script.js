@@ -1,7 +1,8 @@
 let player = 1
 let winner=null
-let playcount = 0
-// let resetButton = document.querySelector(".reset")
+let playcount = 0;
+let resetButton = document.querySelector("#reset");
+console.log(resetButton)
 
 // resetButton.addEventListener("click",resetGame);
 // function resetgame(){
@@ -10,7 +11,7 @@ let playcount = 0
 // }
 
 let status=document.querySelector(".playerturn")
-console.log(status)
+// console.log(status)
 status.innerText = `Player ${player} turn`
 
 const statusgrid =[]
@@ -28,10 +29,8 @@ for (let i=0; i<3; i++){
     }
 }
 
-console.log(statusgrid)
-function boxClick () {
-    console.log("click")
-}
+// console.log(statusgrid)
+
 
 class XO {
     constructor (id,row,column){
