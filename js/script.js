@@ -1,6 +1,13 @@
 let player = 1
-winner=null
+let winner=null
+let playcount = 0
+// let resetButton = document.querySelector(".reset")
 
+// resetButton.addEventListener("click",resetGame);
+// function resetgame(){
+//     console.log("reset")
+//     statusgrid =[]
+// }
 
 let status=document.querySelector(".playerturn")
 console.log(status)
@@ -17,10 +24,6 @@ for (let i=0; i<3; i++){
         box.classList.add(`column${j}`)
         box.id = (`row${i}column${j}`)
         statusgrid[i][j] = 0
-        // let boxname = `${i}${j}`
-        // console.log(boxname)
-        // let `row${i}column${j}` = new XO(`row${i},column${j}`)
-        //box.addEventListener("click", boxClick)
         board.appendChild(box)
     }
 }
@@ -37,9 +40,8 @@ class XO {
         this.id = id;
         this.square = document.querySelector(`#${this.id}`)
         this.squareClick = document.querySelector(`#${this.id}`)
-        .addEventListener('click', this.click)
+        .addEventListener('click', this.click) 
         this.clicked = false;
-        this.color = null;
         
     }
     click = () => {
@@ -47,32 +49,56 @@ class XO {
     //    console.log(this.clicked)
     if(this.clicked == false){
        this.square.classList.add(`player${player}`)
+    //    this.square.innerHTML = player
        statusgrid[this.row][this.column]=player
        this.clicked = true
-       this.evaluate(player)
-            if (player ===1) player =2
-            else player =1
-        status.innerText = `Player ${player} turn`;
-        }
+       playcount ++
+       this.evaluate()
+       console.log(winner)   
+       }
+    
     }
-    evaluate = (player) =>{
+    evaluate = () =>{
+        // check for draw
+        if (playcount ==9) {
+             this.win("DRAW")
+             return
+        }
         // check current row
         console.log(statusgrid)
         if ((statusgrid[this.row][0]==player) && (statusgrid[this.row][1]==player) && (statusgrid[this.row][2]==player)){
-            console.log(`player ${player} wins`)
+            this.win(`row ${this.row}`)
+            return
         }
+         // check current column
         if ((statusgrid[0][this.column]==player) && (statusgrid[1][this.column]==player) && (statusgrid[2][this.column]==player)){
-            console.log(`player ${player} wins`)
+            this.win(`column ${this.column}`)
+            return
         }
-        // check current column
-        // check diagnol
+        // check diagnals
         if((statusgrid[0][2]==player) && (statusgrid[1][1]==player) && (statusgrid[2][0]==player)){
-            console.log(`player ${player} wins`)
+            this.win("diagnal")
+            return
         }
         if((statusgrid[0][0]==player) && (statusgrid[1][1]==player) && (statusgrid[2][2]==player)){
-            console.log(`player ${player} wins`)
+            this.win("diagnal")
+            return
         }
-        console.log("determine if winner")
+        if (player ===1) player =2
+            else player =1
+        status.innerText = `Player ${player} turn`;
+        // console.log("determine if winner")
+    }
+    win = (direction) => {
+        if (player=="DRAW"){
+            console.log("It's a DRAW")
+            status.innerText = "DRAW!!!"
+        } else {
+        console.log(`player ${player} wins`)
+        status.innerText = `Player ${player} WINS!!! on ${direction}`
+        }
+        winner=player
+        console.log(player)
     }
 }
 
