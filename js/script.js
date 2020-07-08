@@ -24,15 +24,16 @@ class XO {
         // this.column = column;
         this.id = id;
         this.square = document.querySelector(`#${this.id}`)
+        .addEventListener('click', this.click)
         this.clicks = 0;
         this.color = null;
-        addEventListener('click', this.click)
+        
     }
     click = (event) => {
         let target = (event.target.id)
-        if (this.id == target){
+        // if (this.id == target){
             console.log(this.id,target)
-        }
+        // }
     }
 }
 
