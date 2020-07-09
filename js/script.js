@@ -1,33 +1,64 @@
 let player = 1
 let winner=null
 let playcount = 0;
+const statusgrid =[]
 let resetButton = document.querySelector("#reset");
-console.log(resetButton)
-
-// resetButton.addEventListener("click",resetGame);
-// function resetgame(){
-//     console.log("reset")
-//     statusgrid =[]
-// }
-
 let status=document.querySelector(".playerturn")
-// console.log(status)
+
 status.innerText = `Player ${player} turn`
 
-const statusgrid =[]
+resetButton.addEventListener("click",resetGame);
+function resetGame(){
+    player =1
+    playcount=0
+    status.innerText = `Player ${player} turn`
+
+    //statusgrid =[]
+
+    row0column0.clicked = false
+    row0column1.clicked = false
+    row0column2.clicked = false
+    row1column0.clicked = false
+    row1column1.clicked = false
+    row1column2.clicked = false
+    row2column0.clicked = false
+    row2column1.clicked = false
+    row2column2.clicked = false
+
+
+    for (let i=0; i<3; i++){
+        let board = document.querySelector("board")
+        let kids = document.querySelectorAll("box")
+        console.log(kids)
+        kids.forEach(element => {
+            element.classList.remove("player1")
+            element.classList.remove("player2")
+        });
+        console.log(board)
+        statusgrid[i] = []
+        for (let j=0; j<3; j++) {
+            statusgrid[i][j] = 0
+        }
+    }
+}
+
 
 for (let i=0; i<3; i++){
+    let board = document.querySelector("board")
     statusgrid[i] = []
     for (let j=0; j<3; j++) {
         let box = document.createElement("box")
-        let board = document.querySelector("board")
         box.classList.add(`row${i}`)
         box.classList.add(`column${j}`)
         box.id = (`row${i}column${j}`)
         statusgrid[i][j] = 0
         board.appendChild(box)
     }
+
 }
+
+
+
 
 // console.log(statusgrid)
 
