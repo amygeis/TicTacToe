@@ -2,7 +2,7 @@ body {
     display: grid;
     height: 100vh;
     grid-template-rows: 150px 1fr 100px;
-    grid-template-columns: 80vw;
+    grid-template-columns: 90vw;
     background-color: wheat;
 }
 header {
@@ -23,9 +23,11 @@ board {
 .flex-grid {    
     display: grid;
     align-content: center;
+    justify-content: center;
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr;
     border: 2px solid black;
+    margin: 20px;
 }
 
 box {
