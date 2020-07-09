@@ -2,7 +2,7 @@ body {
     display: grid;
     height: 100vh;
     grid-template-rows: 150px 1fr 100px;
-    grid-template-columns: 90vw;
+    grid-template-columns: 80vw;
     background-color: wheat;
 }
 header {
@@ -17,8 +17,7 @@ footer {
 
 board {
     grid-row:  2;
-
-    background-color: silver;
+    background-color: lightgray;
 }
 .flex-grid {    
     display: grid;
@@ -32,8 +31,9 @@ board {
 
 box {
     border: 2px solid black;
-    padding: 2px;
+    /* padding: 2px; */
     /* background-color: red */
+    /* padding-top: 100%; */
 }
 
 .player1 {
